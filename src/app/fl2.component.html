@@ -1,3 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<div class="width">
+  <div class="row">
+    <div class="col-md-12" *ngIf="IsGuest()">
+      <!--<auth-view></auth-view>-->
+    </div>
+    <div class="col-md-12" *ngIf="IsUser()">
+      <!--<friends-list></friends-list>-->
+    </div>
+  </div>
+</div>
