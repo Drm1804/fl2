@@ -15,6 +15,10 @@ export class FriendsService {
         });
     }
 
+    logOut() {
+        localStorage.removeItem('user.ses');
+        VK.Auth.logout();
+    }
 
     checkStatusLogin() {
         VK.Auth.getLoginStatus((response)=> {
