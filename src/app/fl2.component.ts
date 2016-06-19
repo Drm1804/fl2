@@ -1,11 +1,22 @@
 import { Component } from '@angular/core';
 
+import { AuthComponent } from './shared/auth/auth.component'
+
 @Component({
   moduleId: module.id,
   selector: 'fl2-app',
   templateUrl: 'fl2.component.html',
-  styleUrls: ['fl2.component.css']
+  styleUrls: ['fl2.component.css'],
+  directives: [AuthComponent]
 })
 export class Fl2AppComponent {
-  title = 'fl2 works!';
+
+
+  isUser() {
+    return (localStorage.getItem('user.ses') !== null)
+  }
+
+  isGuest() {
+    return (localStorage.getItem('user.ses') === null)
+  }
 }
