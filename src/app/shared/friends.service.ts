@@ -20,7 +20,6 @@ export class FriendsService {
 
     fetchFriends() {
         this._friendsObserver.next(this._friends);
-        console.log(this._friends)
     }
 
     init() {

@@ -2,14 +2,14 @@ import { Component, NgZone } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
 import { FriendsService } from '../friends.service';
-//import { OrderFriendsByPipe } from './shared/orderfriendsby.pipe';
+import { OrderFriendsByPipe } from './shared/orderfriendsby.pipe';
 @Component({
     moduleId: module.id,
     selector: 'app-friends',
     templateUrl: 'friends.component.html',
     styleUrls: ['friends.component.css'],
-    providers: [FriendsService]
-    //pipes: [ OrderFriendsByPipe ]
+    providers: [FriendsService],
+    pipes: [ OrderFriendsByPipe ]
 })
 export class FriendsComponent{
 
@@ -26,7 +26,6 @@ export class FriendsComponent{
         friendsService.friends.subscribe(newFriends => {
             this.zone.run(()=> {
                 this.friends = newFriends;
-                console.log(this.friends)
             });
         });
         friendsService.fetchFriends();
@@ -38,5 +37,6 @@ export class FriendsComponent{
 
     changeSort(sort:string){
         this.sortBy = sort;
+        
     }
 }
