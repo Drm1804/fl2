@@ -1,0 +1,10 @@
+<div class="width">
+  <div class="row">
+    <div class="col-md-12" *ngIf="isGuest()">
+      <app-auth></app-auth>
+    </div>
+    <div class="col-md-12" *ngIf="isUser()">
+      <app-friends></app-friends>
+    </div>
+  </div>
+</div>

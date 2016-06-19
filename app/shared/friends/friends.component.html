@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{title}}</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a (click)="logOut()">Выйти</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<button type="button" class="btn btn-default" [class.active]="sortBy === 'first_name'" (click)="changeSort('first_name')">По имени</button>
+<button type="button" class="btn btn-default" [class.active]="sortBy === 'last_name'" (click)="changeSort('last_name')">По фамилии</button>
+<div class="list-group"  *ngFor="let friend of friends | orderFriendsBy : sortBy">
+    <div class="list-group-item">
+        <div class="media" >
+            <span class="pull-left">
+                <img class="media-object img-circle" src="{{friend.photo_50}}" alt="">
+            </span>
+            <div class="media-body">
+                <h4 class="list-group-item-heading">{{friend.first_name}} {{friend.last_name}}</h4>
+                <div *ngIf="friend.university_name" class="univercity">Университет: {{friend.university_name}}</div>
+                <div *ngIf="friend.faculty_name" class="univercity">Факультет {{friend.faculty_name}}</div>
+                <div *ngIf="friend.online" class="univercity">Онлайн</div>
+                <div *ngIf="!friend.online" class="univercity">Не в сети</div>
+            </div>
+        </div>
+    </div>
+</div>
