@@ -20,7 +20,7 @@ export class FriendsComponent{
 
     constructor(private friendsService: FriendsService, private zone:NgZone) {
         this.title = 'FL2';
-        this.sortBy = 'last_name';
+        this.sortBy = this.getSort();
 
         this.zone = new NgZone({enableLongStackTrace: false});
         friendsService.friends.subscribe(newFriends => {
@@ -35,8 +35,12 @@ export class FriendsComponent{
         this.friendsService.logOut();
     }
 
+    getSort(){
+        return  localStorage.getItem('user.sort');
+    }
+
     changeSort(sort:string){
         this.sortBy = sort;
-        
+        localStorage.setItem('user.sort', this.sortBy);
     }
 }
